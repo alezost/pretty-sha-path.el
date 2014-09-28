@@ -1,0 +1,59 @@
+** About
+
+This Emacs package provides minor-mode for prettifying [[http://www.gnu.org/software/guix/][Guix]] / [[http://nixos.org/][Nix]] store
+paths by replacing SHA-sequences with ellipsis, i.e.:
+
+: /gnu/store/onecansee32lettersandnumbershere-foo-0.1  →  /gnu/store/…-foo-0.1
+: /nix/store/someother32lettersandnumbershere-bar-0.2  →  /nix/store/…-bar-0.2
+
+Screenshot: [[http://i.imgur.com/NpvP8OR.png]]
+
+** Installation
+
+As usual for the manual installation, add a directory with
+=pretty-sha-path.el= to the =load-path= and add necessary autoloads:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "/path/to/pretty-sha-path")
+(autoload 'pretty-sha-path-mode "pretty-sha-path" nil t)
+(autoload 'pretty-sha-path-global-mode "pretty-sha-path" nil t)
+#+END_SRC
+
+** Usage
+
+- Enable/disable prettifying for the current buffer:
+  : M-x pretty-sha-path-mode
+
+- Enable/disable prettifying globally:
+  : M-x pretty-sha-path-global-mode
+
+Using programmatically in your emacs init file:
+
+- Enable only for some modes:
+
+  #+BEGIN_SRC emacs-lisp
+  (add-hook 'shell-mode-hook 'pretty-sha-path-mode)
+  (add-hook 'dired-mode-hook 'pretty-sha-path-mode)
+  #+END_SRC
+
+- Or enable globally on emacs start:
+
+  #+BEGIN_SRC emacs-lisp
+  (pretty-sha-path-global-mode)
+  #+END_SRC
+
+** Why?
+
+So why does this package exist if there is a more general solution –
+[[http://github.com/drothlis/pretty-symbols][pretty-symbols]]?  =pretty-symbols= has 2 disadvantages (IMHO):
+
+- It is not possible to enable it globally.
+- Decomposition does not occur after disabling the mode, i.e. the paths
+  would stay "prettified".
+
+So if you are not going to disable it and use it globally, then
+=pretty-symbols-mode= will probably be a better call.
+
+/Note:/ There is also =prettify-symbols-mode= which is a part of Emacs
+24.4.  It is great for prettifying symbols (like "lambda") but it does
+not support regexps.
