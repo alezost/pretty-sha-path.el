@@ -5,6 +5,7 @@
 ;; Author: Alex Kost <alezost@gmail.com>
 ;; Created: 27 Sep 2014
 ;; Version: 0.1
+;; URL: https://gitorious.org/alezost-emacs/pretty-sha-path
 ;; URL: https://github.com/alezost/pretty-sha-path.el
 ;; Keywords: faces convenience
 
