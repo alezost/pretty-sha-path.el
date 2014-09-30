@@ -105,7 +105,7 @@ This will transform
   :group 'pretty-sha-path)
 
 (defvar pretty-sha-path-special-modes
-  '(guix-info-mode)
+  '(guix-info-mode ibuffer-mode)
   "List of special modes that support font-locking.
 
 By default, \\[pretty-sha-path-global-mode] enables prettifying
