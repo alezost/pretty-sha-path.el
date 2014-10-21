@@ -117,7 +117,7 @@ Modes from this list and all derived modes are exceptions
 \(`pretty-sha-path-global-mode' enables prettifying there).")
 
 (defvar pretty-sha-path-flush-function
-  (if (version< emacs-version "24.3.50")
+  (if (version< emacs-version "24.4.50")
       #'jit-lock-refontify
     #'font-lock-flush)
   "Function used to refontify buffer.
