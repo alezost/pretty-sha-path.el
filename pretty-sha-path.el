@@ -28,13 +28,13 @@
 ;; paths, i.e. after enabling `pretty-sha-path-mode',
 ;; '/gnu/store/72f54nfp6g1hz873w8z3gfcah0h4nl9p-foo-0.1' paths will be
 ;; replaced with '/gnu/store/…-foo-0.1' paths in the current buffer.
-;; There is also `pretty-sha-path-global-mode' for global prettifying.
+;; There is also `global-pretty-sha-path-mode' for global prettifying.
 
 ;; To install, add the following to your emacs init file:
 ;;
 ;;   (add-to-list 'load-path "/path/to/pretty-sha-path")
 ;;   (autoload 'pretty-sha-path-mode "pretty-sha-path" nil t)
-;;   (autoload 'pretty-sha-path-global-mode "pretty-sha-path" nil t)
+;;   (autoload 'global-pretty-sha-path-mode "pretty-sha-path" nil t)
 
 ;; If you want to enable/disable composition after "M-x font-lock-mode",
 ;; use the following setting:
@@ -110,13 +110,13 @@ This will transform
   '(guix-info-mode ibuffer-mode)
   "List of special modes that support font-locking.
 
-By default, \\[pretty-sha-path-global-mode] enables prettifying
+By default, \\[global-pretty-sha-path-mode] enables prettifying
 in all buffers except the ones where `font-lock-defaults' is
 nil (see Info node `(elisp) Font Lock Basics'), because it may
 break the existing highlighting.
 
 Modes from this list and all derived modes are exceptions
-\(`pretty-sha-path-global-mode' enables prettifying there).")
+\(`global-pretty-sha-path-mode' enables prettifying there).")
 
 (defvar pretty-sha-path-flush-function
   (cond ((fboundp 'font-lock-flush) #'font-lock-flush)
@@ -170,7 +170,7 @@ buffer's highlighting may survive after adding new elements to
 `font-lock-keywords' (see `pretty-sha-path-special-modes' for
 details).
 
-Also you can use `pretty-sha-path-global-mode' to enable Pretty
+Also you can use `global-pretty-sha-path-mode' to enable Pretty
 SHA Path mode for all modes that support font-locking."
   :init-value nil
   :lighter " …"
@@ -199,8 +199,11 @@ See `pretty-sha-path-special-modes' for details."
        (pretty-sha-path-mode)))
 
 ;;;###autoload
-(define-globalized-minor-mode pretty-sha-path-global-mode
+(define-globalized-minor-mode global-pretty-sha-path-mode
   pretty-sha-path-mode pretty-sha-path-turn-on)
+
+;;;###autoload
+(defalias 'pretty-sha-path-global-mode 'global-pretty-sha-path-mode)
 
 (provide 'pretty-sha-path)
 

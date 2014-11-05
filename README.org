@@ -22,7 +22,7 @@ As usual for the manual installation, add a directory with
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path "/path/to/pretty-sha-path")
 (autoload 'pretty-sha-path-mode "pretty-sha-path" nil t)
-(autoload 'pretty-sha-path-global-mode "pretty-sha-path" nil t)
+(autoload 'global-pretty-sha-path-mode "pretty-sha-path" nil t)
 #+END_SRC
 
 ** Usage
@@ -31,7 +31,7 @@ As usual for the manual installation, add a directory with
   : M-x pretty-sha-path-mode
 
 - Enable/disable prettifying globally:
-  : M-x pretty-sha-path-global-mode
+  : M-x global-pretty-sha-path-mode
 
 Using programmatically in your emacs init file:
 
@@ -45,7 +45,7 @@ Using programmatically in your emacs init file:
 - Or enable globally on emacs start:
 
   #+BEGIN_SRC emacs-lisp
-  (pretty-sha-path-global-mode)
+  (global-pretty-sha-path-mode)
   #+END_SRC
 
 ** Why?
