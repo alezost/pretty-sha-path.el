@@ -117,9 +117,8 @@ Modes from this list and all derived modes are exceptions
 \(`pretty-sha-path-global-mode' enables prettifying there).")
 
 (defvar pretty-sha-path-flush-function
-  (if (version< emacs-version "24.4.50")
-      #'jit-lock-refontify
-    #'font-lock-flush)
+  (cond ((fboundp 'font-lock-flush) #'font-lock-flush)
+        ((fboundp 'jit-lock-refontify) #'jit-lock-refontify))
   "Function used to refontify buffer.
 This function is called without arguments after
 enabling/disabling `pretty-sha-path-mode'.
