@@ -26,7 +26,7 @@
 
 ;; This package provides minor-mode for prettifying Guix/Nix store
 ;; paths, i.e. after enabling `pretty-sha-path-mode',
-;; '/gnu/store/herewehavefancylettersandnumbers-foo-0.1' paths will be
+;; '/gnu/store/72f54nfp6g1hz873w8z3gfcah0h4nl9p-foo-0.1' paths will be
 ;; replaced with '/gnu/store/…-foo-0.1' paths in the current buffer.
 ;; There is also `pretty-sha-path-global-mode' for global prettifying.
 
@@ -80,9 +80,11 @@ disabling `pretty-sha-path-mode' a little faster."
 
 (defcustom pretty-sha-path-regexp
   (rx "/"
-    (or "nix" "gnu")
-    "/store/"
-    (group (= 32 alnum)))
+      (or "nix" "gnu")
+      "/store/"
+      ;; Hash-parts do not include "e", "o", "u" and "t".  See base32Chars
+      ;; at <https://github.com/NixOS/nix/blob/master/src/libutil/hash.cc>
+      (group (= 32 (any "0-9" "a-d" "f-n" "p-s" "v-z"))))
   "Regexp matching SHA paths.
 
 Disable `pretty-sha-path-mode' before modifying this variable and
@@ -94,7 +96,7 @@ Example of a \"deeper\" prettifying:
         pretty-sha-path-regexp-group 0)
 
 This will transform
-'/gnu/store/onecansee32lettersandnumbershere-foo-0.1' into
+'/gnu/store/72f54nfp6g1hz873w8z3gfcah0h4nl9p-foo-0.1' into
 '/gnu/…-foo-0.1'"
   :type 'regexp
   :group 'pretty-sha-path)

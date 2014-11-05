@@ -3,8 +3,8 @@
 This Emacs package provides minor-mode for prettifying [[http://www.gnu.org/software/guix/][Guix]] / [[http://nixos.org/][Nix]] store
 paths by replacing SHA-sequences with ellipsis, i.e.:
 
-: /gnu/store/onecansee32lettersandnumbershere-foo-0.1  →  /gnu/store/…-foo-0.1
-: /nix/store/someother32lettersandnumbershere-bar-0.2  →  /nix/store/…-bar-0.2
+: /gnu/store/72f54nfp6g1hz873w8z3gfcah0h4nl9p-foo-0.1  →  /gnu/store/…-foo-0.1
+: /nix/store/nh4n4yzb1bx7nss2rg342dz44g14m06x-bar-0.2  →  /nix/store/…-bar-0.2
 
 Screenshot: [[http://i.imgur.com/NpvP8OR.png]]
 
