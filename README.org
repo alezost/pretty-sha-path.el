@@ -25,6 +25,12 @@ As usual for the manual installation, add a directory with
 (autoload 'global-pretty-sha-path-mode "pretty-sha-path" nil t)
 #+END_SRC
 
+*** Guix
+
+=pretty-sha-path= is also distributed with GNU Guix (since Guix 0.8), so
+if you have Guix installed, this package is already installed. The only
+difference is that it is called =guix-prettify= there.
+
 ** Usage
 
 - Enable/disable prettifying for the current buffer:
